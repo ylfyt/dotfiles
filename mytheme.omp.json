@@ -24,11 +24,11 @@
 					"style": "powerline",
 					"powerline_symbol": "\uE0B0",
 					"foreground": "#100e23",
-					"background": "#91ddff",
+					"background": "#ff73dc",
 					"properties": {
 						"folder_icon": "\uF115",
 						"folder_separator_icon": " \uE0B1 ",
-						"style": "full"
+						"style": "agnoster_short"
 					}
 				},
 				{
@@ -36,10 +36,7 @@
 					"style": "powerline",
 					"powerline_symbol": "\uE0B0",
 					"foreground": "#193549",
-					"background": "#95ffa4",
-					"properties": {
-						"template": "{{ .HEAD }}"
-					}
+					"background": "#95ffa4"
 				},
 				{
 					"type": "python",
@@ -58,7 +55,7 @@
 					"foreground": "#ffffff",
 					"background": "#ff8080",
 					"properties": {
-						"template": "\uE20F"
+						"prefix": " \uE20F"
 					}
 				}
 			]
@@ -71,10 +68,10 @@
 				{
 					"type": "text",
 					"style": "plain",
-					"foreground": "#007ACC",
+					"foreground": "#fbff00",
 					"properties": {
 						"prefix": "",
-						"text": "\u276F"
+						"text": "\u276F\u276F"
 					}
 				}
 			]
