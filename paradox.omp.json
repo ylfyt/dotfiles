@@ -27,8 +27,8 @@
 					"background": "#ff73dc",
 					"properties": {
 						"folder_icon": "\uF115",
-						"folder_separator_icon": "/",
-						"style": "full"
+						"folder_separator_icon": " \uE0B1 ",
+						"style": "agnoster_short"
 					}
 				},
 				{
