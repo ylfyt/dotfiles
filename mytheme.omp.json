@@ -73,7 +73,7 @@
 					"type": "time",
 					"style": "plain",
 					"powerline_symbol": "\uE0B0",
-					"foreground": "#ffffff",
+					"foreground": "#95ffa4",
 					"properties": {
 						"prefix": ""
 					}
