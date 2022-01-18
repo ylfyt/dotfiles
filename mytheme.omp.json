@@ -37,7 +37,7 @@
 						"color_background": false,
 						"local_changes_color": "#000000",
 						"working_color": "#E84855",
-						"staging_color": "#2FDA4E",
+						"staging_color": "#b004a2",
 						"ahead_color": "#2EC4B6",
 						"behind_color": "#8A4FFF"
 					}
