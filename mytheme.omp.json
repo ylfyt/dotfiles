@@ -43,6 +43,17 @@
 					}
 				},
 				{
+					"type": "executiontime",
+					"style": "powerline",
+					"powerline_symbol": "\uE0B0",
+					"foreground": "#100e23",
+					"background": "#7cc1ee",
+					"properties": {
+						"always_enabled": true,
+						"style": "roundrock"
+					}
+				},
+				{
 					"type": "python",
 					"style": "powerline",
 					"powerline_symbol": "\uE0B0",
