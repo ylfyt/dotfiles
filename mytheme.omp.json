@@ -1,21 +1,23 @@
 {
 	"$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-	"final_space": false,
-	"osc99": true,
 	"blocks": [
 		{
 			"type": "prompt",
 			"alignment": "left",
 			"segments": [
 				{
+					"type": "root",
+					"style": "powerline",
+					"foreground": "#100e23",
+					"background": "#ffe9aa"
+				},
+				{
 					"type": "path",
-					"style": "diamond",
-					"leading_diamond": "<#ff73dc>┏</>",
-					"trailing_diamond": "",
-					"foreground": "#000000",
+					"style": "powerline",
+					"powerline_symbol": "\uE0B0",
+					"foreground": "#100e23",
 					"background": "#ff73dc",
 					"properties": {
-						"prefix": "",
 						"folder_icon": "\uF115",
 						"folder_separator_icon": "/",
 						"style": "letter"
@@ -41,6 +43,17 @@
 					}
 				},
 				{
+					"type": "executiontime",
+					"style": "powerline",
+					"powerline_symbol": "\uE0B0",
+					"foreground": "#100e23",
+					"background": "#7cc1ee",
+					"properties": {
+						"always_enabled": true,
+						"style": "roundrock"
+					}
+				},
+				{
 					"type": "python",
 					"style": "powerline",
 					"powerline_symbol": "\uE0B0",
@@ -51,14 +64,13 @@
 					}
 				},
 				{
-					"type": "executiontime",
+					"type": "exit",
 					"style": "powerline",
 					"powerline_symbol": "\uE0B0",
-					"foreground": "#100e23",
-					"background": "#7cc1ee",
+					"foreground": "#ffffff",
+					"background": "#ff8080",
 					"properties": {
-						"always_enabled": true,
-						"style": "roundrock"
+						"prefix": " \uE20F"
 					}
 				}
 			]
@@ -70,36 +82,24 @@
 			"segments": [
 				{
 					"type": "time",
-					"style": "diamond",
+					"style": "plain",
 					"powerline_symbol": "\uE0B0",
-					"leading_diamond": "",
-					"foreground": "#21c7c7",
-					"properties": {
-						"prefix": "┖[",
-						"postfix": "] ",
-						"time_format": "15:04"
-					}
-				},
-				{
-					"type": "root",
-					"style": "powerline",
-					"foreground": "#ffe9aa",
+					"foreground": "#95ffa4",
 					"properties": {
 						"prefix": ""
 					}
 				},
 				{
-					"type": "exit",
+					"type": "text",
 					"style": "plain",
 					"foreground": "#fbff00",
 					"properties": {
-						"prefix": "\u276F",
-						"display_exit_code": false,
-						"always_enabled": true,
-						"error_color": "#ef5350"
+						"prefix": "",
+						"text": "\u276F"
 					}
 				}
 			]
 		}
-	]
+	],
+	"final_space": false
 }
