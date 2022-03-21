@@ -75,7 +75,7 @@
 					"style": "plain",
 					"foreground": "#ffe9aa",
 					"properties": {
-						"postfix": ""
+						"prefix": ""
 					}
 				},
 				{
@@ -84,7 +84,7 @@
 					"powerline_symbol": "\uE0B0",
 					"foreground": "#95ffa4",
 					"properties": {
-						"prefix": " ",
+						"prefix": "",
 						"time_format": "15:04"
 					}
 				},
