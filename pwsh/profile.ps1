@@ -5,6 +5,7 @@ Import-Module oh-my-posh
 Import-Module Terminal-Icons
 
 oh-my-posh init pwsh --config ~/dotfiles/pwsh/mytheme.omp.json | Invoke-Expression
+$env:POSH_GIT_ENABLED = $true
 
 Set-Alias j z
 Set-Alias vi nvim
@@ -16,7 +17,7 @@ function ll($path){
 	ls $path | less -R
 }
 
-$themes = 'C:\Program Files\WindowsPowerShell\Modules\oh-my-posh\3.175.0\themes'
+$themes = "C:/Users/Yudi/dotfiles/pwsh/mytheme.omp.json"
 $ivim = 'C:\Users\Yudi\AppData\Local\nvim\init.vim'
 $settings = 'C:\Users\Yudi\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json'
 $stim = '/storage/emulated/0/'
