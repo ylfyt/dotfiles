@@ -34,6 +34,7 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -Color @{ Parameter = '#E84855' }
 Set-PSReadLineOption -Colors @{ Operator = 'Red' }
 
+# List Directory using less
 function ll($path){
 	ls $path | less -R
 }
@@ -42,6 +43,7 @@ function ex{
 	explorer .
 }
 
+# NPM UTILITY
 function nr ($cmd){
 	npm run $cmd
 }
@@ -58,14 +60,17 @@ function nrd (){
 	npm run start
 }
 
+# Switch window theme light and dark (1 for light and 0 for dark)
 function light($mode = 1){
 	Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value $mode
 }
 
+# List directory with filter
 function lf($f, $p){
 	Get-ChildItem -Path $p -Filter *$f*
 }
 
+# List directory with filter and recursively
 function lfr($f, $e){
 	if ($e -eq $null){
 		Get-ChildItem -Exclude node_modules | Get-ChildItem -r -Filter *$f*
@@ -76,103 +81,89 @@ function lfr($f, $e){
 	}
 }
 
+# List directory only name
 function ld($p){
 	ls -Name $p
 }
 
+# Open WSL in Home Directory
 function ws(){
 	wsl ~
 }
 
+# Which command utility
 function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
+# Open Android Virtual Device
 function avd($name = $avd1){
 	emulator -avd $name
 }
 
+# WINDOWS TERMINAL UTILITY
+# Split horizontal
 function sdh{
 	wt -w 0 sp -H -d .
 }
 
+# Split horizontal
 function sd{
 	sdh
 }
 
+# Split vertical
 function sdv{
 	wt -w 0 sp -V -d .
 }
 
+# Split horizontal then split vertical
 function sd2{
 	sdh
 	sdv
 }
 
+# Reload window
 function rw {
 	wt -w 0 nt -d .
 	Start-Sleep -s 1
 	exit
 }
 
+# New Tab
 function nt {
 	wt -w 0 nt -d .
 }
 
 
+# GIT UTILITY
+# Git log graph
 function gg{
     git log --oneline --graph --decorate --all
 }
 
+# Git status
 function gs{
     git status
 }
 
+# Git diff with param
 function gd($param){
     git diff $param
 }
 
+# Goto projects directory: Change it
 function cdp($p){
     Set-Location -Path "D:\projects\$p"
 }
 
-function getip(){
-	# Get Ip Address
-	[string]$var = adb shell ifconfig
-	[string]$temp = $var.Split(" ") | Select-String "addr:192."
-	[string]$ip = $temp.Split(":")[1]
-	return $ip 
-}
-
-function adw(){	
-	adb kill-server	
-	adb tcpip 5555
-	Start-Sleep -s 2	
-	$ip = getip
-	adb connect $ip
-}
-
-function getAllDeviceId(){
-	[string]$var = adb devices
-	$other = ($var  |  Select-String -Pattern "\d{1,3}(\.\d{1,3}){3}" -AllMatches).Matches.Value
-	
-	return $other
-}
-
-function rsa($idx){
-	# echo $ip.GetType()
-	if ($idx -eq $null){
+# Using Scrcpy : https://github.com/Genymobile/scrcpy
+function rsa($ip){
+	if ($ip -eq $null){
 		scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off	
 	}
 	else {
-		$ids = getAllDeviceId
-		$ip = $ids[$idx-1]
-
-		if ($ip -eq $null){
-			$ip = $ids[0]
-		}
-		echo ("Connect to " + $ip)
 		scrcpy -s $ip --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off
 	}
 	#
@@ -182,33 +173,4 @@ function rsat(){
         scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off --always-on-top
 }
 
-function sshr($ip){
-	# 192.168.1.14
-	echo 'Connecting to redmi 4 via ssh'
-	ssh u0_a156@$ip -p 8022
-}
-
-function sshm($ip){
-	# 192.168.1.19
-	echo 'Connecting to max pro m1 via ssh'
-	ssh u0_a237@$ip -p 8022
-}
-
-function Get-Temperature {
-    $t = Get-WmiObject MSAcpi_ThermalZoneTemperature -Namespace "root/wmi"
-    $returntemp = @()
-
-    foreach ($temp in $t.CurrentTemperature)
-    {
-
-
-    $currentTempKelvin = $temp / 10
-    $currentTempCelsius = $currentTempKelvin - 273.15
-
-    $currentTempFahrenheit = (9/5) * $currentTempCelsius + 32
-
-    $returntemp += $currentTempCelsius.ToString() + " C : " + $currentTempFahrenheit.ToString() + " F : " + $currentTempKelvin + "K"  
-    }
-    return $returntemp
-}
 
