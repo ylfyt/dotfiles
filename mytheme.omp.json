@@ -10,7 +10,7 @@
 					"style": "diamond",
 					"powerline_symbol": "\uE0B0",
 					"leading_diamond": "",
-					"foreground": "#80e1ff",
+					"foreground": "#93B7C4",
 					"background": "#18354c",
 					"properties": {
 						"prefix": "",
@@ -24,7 +24,7 @@
 					"type": "git",
 					"style": "powerline",
 					"powerline_symbol": "",
-					"foreground": "#ffc107",
+					"foreground": "#93B7C4",
 					"background": "#18354c",
 					"properties": {
 						"display_stash_count": true,
@@ -44,7 +44,7 @@
 					"type": "python",
 					"style": "powerline",
 					"powerline_symbol": "\uE0B0",
-					"foreground": "#00ffea",
+					"foreground": "#93B7C4",
 					"background": "#18354c",
 					"properties": {
 						"prefix": "",
@@ -55,7 +55,7 @@
 					"type": "executiontime",
 					"style": "powerline",
 					"powerline_symbol": "\uE0B0",
-					"foreground": "#ff73dc",
+					"foreground": "#93B7C4",
 					"background": "#18354c",
 					"properties": {
 						"always_enabled": true,
@@ -82,7 +82,7 @@
 					"type": "time",
 					"style": "plain",
 					"powerline_symbol": "\uE0B0",
-					"foreground": "#95ffa4",
+					"foreground": "#7C878C",
 					"properties": {
 						"prefix": "",
 						"time_format": "15:04"
@@ -91,12 +91,12 @@
 				{
 					"type": "exit",
 					"style": "plain",
-					"foreground": "#fbff00",
+					"foreground": "#93B7C4",
 					"properties": {
 						"display_exit_code": false,
 						"prefix": "\u276F",
 						"always_enabled": true,
-						"error_color": "#ef5350"
+						"error_color": "#E84855"
 					}
 				}
 			]
