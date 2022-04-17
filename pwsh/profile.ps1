@@ -4,24 +4,24 @@ Import-Module Posh-Git
 Import-Module oh-my-posh
 Import-Module Terminal-Icons
 
-oh-my-posh init pwsh --config ~/dotfiles/pwsh/mytheme.omp.json | Invoke-Expression
-$env:POSH_GIT_ENABLED = $true
+$theme = "mytheme.omp.json"
+$avd1 = "Pixel_4_XL_API_31"
+$stem = '/storage/6BDA-99FE/'
+$stim = '/storage/emulated/0/'
+$ivim = "$env:USERPROFILE\AppData\Local\nvim\init.vim"
+$theme_path = "$env:USERPROFILE\dotfiles\pwsh\$theme"
+$settings = "$env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 
 Set-Alias j z
 Set-Alias vi nvim
 Set-Alias l ls
 Set-Alias g git
 Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
+Set-Alias vs "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"
+Set-Alias emulator "$env:USERPROFILE\AppData\Local\Android\Sdk\emulator\emulator.exe"
 
-function ll($path){
-	ls $path | less -R
-}
-
-$themes = "C:/Users/Yudi/dotfiles/pwsh/mytheme.omp.json"
-$ivim = 'C:\Users\Yudi\AppData\Local\nvim\init.vim'
-$settings = 'C:\Users\Yudi\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json'
-$stim = '/storage/emulated/0/'
-$stem = '/storage/6BDA-99FE/'
+# Oh my Posh
+oh-my-posh init pwsh --config $theme_path | Invoke-Expression
 
 # Fzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
@@ -33,6 +33,10 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -Color @{ Parameter = '#E84855' }
 Set-PSReadLineOption -Colors @{ Operator = 'Red' }
+
+function ll($path){
+	ls $path | less -R
+}
 
 function ex{
 	explorer .
@@ -84,10 +88,6 @@ function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
-
-$avd1 = "Pixel_4_XL_API_31"
-Set-Alias vs "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"
-Set-Alias emulator C:\Users\Yudi\AppData\Local\Android\Sdk\emulator\emulator.exe
 
 function avd($name = $avd1){
 	emulator -avd $name
