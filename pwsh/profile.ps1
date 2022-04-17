@@ -4,8 +4,7 @@ Import-Module Posh-Git
 Import-Module oh-my-posh
 Import-Module Terminal-Icons
 
-$omp_config = Join-Path $PSScriptRoot "./mytheme.omp.json"
-# oh-my-posh --init --shell pwsh --config $omp_config | Invoke-Expression
+oh-my-posh init pwsh --config ~/dotfiles/pwsh/mytheme.omp.json | Invoke-Expression
 
 Set-Alias j z
 Set-Alias vi nvim
