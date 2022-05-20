@@ -1,6 +1,5 @@
-Clear-Host
+# Clear-Host
 
-Import-Module Posh-Git
 Import-Module oh-my-posh
 Import-Module Terminal-Icons
 
@@ -19,6 +18,8 @@ Set-Alias g git
 Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
 Set-Alias vs "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"
 Set-Alias emulator "$env:USERPROFILE\AppData\Local\Android\Sdk\emulator\emulator.exe"
+
+Import-Module Posh-Git
 
 # Oh my Posh
 oh-my-posh init pwsh --config $theme_path | Invoke-Expression

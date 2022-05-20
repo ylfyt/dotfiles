@@ -8,6 +8,10 @@
 <!c:: Send ^#{left}
 <!v:: Send ^#{right}
 
+; Disable pgup pgdn
+PgDn::Return
+PgUp::Return
+
 ; LAlt+C or LAlt+doubleC : Switch right and left virtual desktop
 /*
 LAlt & c::
