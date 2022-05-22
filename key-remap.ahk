@@ -8,6 +8,9 @@
 <!c:: Send ^#{left}
 <!v:: Send ^#{right}
 
+RAlt:: Send ^#{left}
+RCtrl:: Send ^#{Right}
+
 ; Disable pgup pgdn
 PgDn::Return
 PgUp::Return

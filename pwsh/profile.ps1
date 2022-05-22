@@ -1,4 +1,4 @@
-# Clear-Host
+Clear-Host
 
 Import-Module oh-my-posh
 Import-Module Terminal-Icons
@@ -10,6 +10,7 @@ $stim = '/storage/emulated/0/'
 $ivim = "$env:USERPROFILE\AppData\Local\nvim\init.vim"
 $theme_path = "$env:USERPROFILE\dotfiles\pwsh\$theme"
 $settings = "$env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+$dotfiles = "$env:USERPROFILE\dotfiles\"
 
 Set-Alias j z
 Set-Alias vi nvim
