@@ -12,8 +12,8 @@ RAlt:: Send ^#{left}
 RCtrl:: Send ^#{Right}
 
 ; Disable pgup pgdn
-PgDn::Return
 PgUp::Return
+PgDn::Send +!f
 
 ; LAlt+C or LAlt+doubleC : Switch right and left virtual desktop
 /*
