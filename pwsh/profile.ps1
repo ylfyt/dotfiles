@@ -175,4 +175,8 @@ function rsat(){
         scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off --always-on-top
 }
 
+# Connect to termux ssh
+function ssht($user, $ip){
+  ssh u0_a$user@$ip -p 8022
+}
 
