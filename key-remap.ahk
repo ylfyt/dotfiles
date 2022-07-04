@@ -1,3 +1,5 @@
+^!r::Reload  ; Ctrl+Alt+R
+
 ; Mapping arrow key using o k l ;
 <!k:: Send {left}
 <!l:: Send {down}
@@ -5,15 +7,17 @@
 <!;:: Send {right}
 
 ; LAlt+V or LAlt+C : Switch right and left virtual desktop
-<!c:: Send ^#{left}
-<!v:: Send ^#{right}
+; <!c:: Send ^#{left}
+; <!v:: Send ^#{right}
 
-NumpadMult:: Send ^#{left}
-NumpadSub:: Send ^#{Right}
+F1:: Send ^#{left}
+F2:: Send ^#{Right}
 
 ; Disable pgup pgdn
 PgUp::Return
 PgDn::Send +!f
+
+; >^]::send {LWin down}{LCtrl down}{Left}{LCtrl up}{LWin up}
 
 ; LAlt+C or LAlt+doubleC : Switch right and left virtual desktop
 /*
