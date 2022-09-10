@@ -1,7 +1,7 @@
 Clear-Host
 
 Import-Module oh-my-posh
-Import-Module Terminal-Icons
+# Import-Module Terminal-Icons
 
 $theme = "mytheme.omp.json"
 $avd1 = "Pixel_4_XL_API_31"

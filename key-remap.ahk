@@ -10,8 +10,8 @@
 ; <!c:: Send ^#{left}
 ; <!v:: Send ^#{right}
 
-F1:: Send ^#{left}
-F2:: Send ^#{Right}
+NumpadMult:: Send ^#{left}
+NumpadSub:: Send ^#{Right}
 
 ; Disable pgup pgdn
 PgUp::Return
