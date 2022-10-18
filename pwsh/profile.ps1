@@ -1,6 +1,5 @@
 Clear-Host
 
-Import-Module oh-my-posh
 # Import-Module Terminal-Icons
 
 $theme = "mytheme.omp.json"
