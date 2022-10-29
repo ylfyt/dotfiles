@@ -4,7 +4,7 @@ Clear-Host
 
 $theme = "mytheme.omp.json"
 $avd1 = "Pixel_4_XL_API_31"
-$stem = '/storage/6BDA-99FE/'
+# $stem = '/storage/6BDA-99FE/'
 $stim = '/storage/emulated/0/'
 $ivim = "$env:USERPROFILE\AppData\Local\nvim\init.vim"
 $theme_path = "$env:USERPROFILE\dotfiles\pwsh\$theme"
@@ -19,7 +19,7 @@ Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
 Set-Alias vs "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"
 Set-Alias emulator "$env:USERPROFILE\AppData\Local\Android\Sdk\emulator\emulator.exe"
 
-Import-Module Posh-Git
+# Import-Module Posh-Git
 
 # Oh my Posh
 oh-my-posh init pwsh --config $theme_path | Invoke-Expression
@@ -173,9 +173,3 @@ function rsa($ip){
 function rsat(){
         scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off --always-on-top
 }
-
-# Connect to termux ssh
-function ssht($user, $ip){
-  ssh u0_a$user@$ip -p 8022
-}
-
