@@ -162,6 +162,7 @@ function cdp($p){
 # Using Scrcpy : https://github.com/Genymobile/scrcpy
 function rsa($ip){
 	if ($ip -eq $null){
+		echo "scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off"
 		scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off	
 	}
 	else {

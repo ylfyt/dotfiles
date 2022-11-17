@@ -10,6 +10,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export PATH=$PATH:/usr/local/go/bin
 
 
 # BIND KEY
@@ -87,6 +88,9 @@ plugins=(git z zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#06979c,bold"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -117,6 +121,11 @@ alias g="git"
 alias gs="git status"
 alias gg="git log --oneline --graph --decorate --all"
 alias gd="git diff"
+alias air='$(go env GOPATH)/bin/air'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
