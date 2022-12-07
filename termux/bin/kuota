@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ $1 -eq '3' ]]
+then
+	echo 'Sending request to tri'
+	termux-sms-send -n 234 -s 0 'info kuota'
+else
+	echo 'Sending request to tsel'
+	termux-sms-send -n 3636 -s 1 "UL INFO"
+fi

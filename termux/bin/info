@@ -1,0 +1,12 @@
+echo '[Custom Commands]'
+echo 'kuota     -> Send sms for checking internet kuota'
+echo 'sms       -> Show all sms list'
+echo 'notif     -> Show all notification list'
+echo 'power     -> Toggle screen on/off'
+echo 'adbtcp    -> Enable adb over network'
+echo 'info      -> Show this message'
+
+echo ''
+echo '[ADB Status]'
+sudo getprop | grep adb.tcp.port
+echo ''
