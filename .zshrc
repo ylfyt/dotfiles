@@ -21,6 +21,7 @@ alias g="git"
 alias gs="git status"
 alias gg="git log --oneline --graph --decorate --all"
 alias gd="git diff"
+alias sc="scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off"
 
 alias air='$(go env GOPATH)/bin/air'
 
