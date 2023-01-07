@@ -174,3 +174,7 @@ function rsa($ip){
 function rsat(){
         scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off --always-on-top
 }
+
+function mido($arg){
+			ssh u0_a108@192.168.43.1 -p 8022 $arg
+}
