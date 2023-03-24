@@ -30,3 +30,10 @@ Else
  Send ^#{left}
 Return
 */
+
+NumpadUp::Send {Volume_Up}
+NumpadDown::Send {Volume_Down}
+NumpadLeft::Send {Media_Prev}
+NumpadRight::Send {Media_Next}
+NumpadPgdn::Send {Volume_Mute}
+NumpadClear::Send {Media_Play_Pause}
