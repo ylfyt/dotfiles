@@ -31,6 +31,8 @@ Else
 Return
 */
 
+Ins::Send,  {PrintScreen}
+
 NumpadUp::Send {Volume_Up}
 NumpadDown::Send {Volume_Down}
 NumpadLeft::Send {Media_Prev}

@@ -17,7 +17,7 @@ Set-Alias l ls
 Set-Alias g git
 Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
 Set-Alias vs "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"
-Set-Alias emulator "$env:USERPROFILE\AppData\Local\Android\Sdk\emulator\emulator.exe"
+Set-Alias emulator "$env:USERPROFILE\Android\Sdk\emulator\emulator.exe"
 
 # Import-Module Posh-Git
 
@@ -162,17 +162,17 @@ function cdp($p){
 # Using Scrcpy : https://github.com/Genymobile/scrcpy
 function rsa($ip){
 	if ($ip -eq $null){
-		echo "scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off"
-		scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off	
+		echo "scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --turn-screen-off"
+		scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --turn-screen-off	
 	}
 	else {
-		scrcpy -s $ip --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off
+		scrcpy -s $ip --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --turn-screen-off
 	}
 	#
 }
 
 function rsat(){
-        scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off --always-on-top
+        scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --turn-screen-off --always-on-top
 }
 
 function mido($arg){
