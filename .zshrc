@@ -1,5 +1,17 @@
-export PATH=$PATH:/usr/local/go/bin
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # CASE_SENSITIVE="true"
@@ -12,20 +24,37 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 source $ZSH/oh-my-zsh.sh
 
-plugins=(git z zsh-autosuggestions)
+plugins=(git z zsh-autosuggestions zsh-fzf-history-search)
 
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ***********************************************************************
+
+# CONFIGURATIONS
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#06979c,bold"
 
+# KEYBOARD REMAPPING
+# xmodmap -e "keycode 118 = Delete" # Insert -> Delete
+# xmodmap -e "keycode 107 = Home" # PrtSc -> Home
+# xmodmap -e "keycode 119 = End" #Delete -> End
+
+ZSH_FZF_HISTORY_SEARCH_BIND='^f'
+
+bindkey '^H' backward-kill-word
+
+# ALIAS
 alias j="z"
 alias g="git"
 alias gs="git status"
-alias gg="git log --oneline --graph --decorate --all"
+# alias gg="git log --oneline --graph --decorate --all"
+alias gg="~/dotfiles/bin/gg"
 alias gd="git diff"
 alias sc="scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off"
 
 alias air='$(go env GOPATH)/bin/air'
 
-# BIND KEY
-# > showkey -a
-# bindkey '^H' backward-kill-word
-# bindkey '5~' kill-word
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$PATH":"$HOME/.pub-cache/bin"

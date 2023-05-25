@@ -1,0 +1,25 @@
+#!/bin/bash
+
+format="%C(auto)%h%C(reset){d}%C(auto)%d%C(reset) %C(white)%s%C(reset){a}"
+
+while getopts 'da' OPTION; do
+  case "$OPTION" in
+    d)
+      dateCode=" %C(bold green)%as%C(reset) "
+      format=$(echo "$format" | sed "s/{d}/$dateCode/g")
+      ;;
+    a)
+      authorCode=' %C(dim white)- %an%C(reset) '
+      format=$(echo "$format" | sed "s/{a}/$authorCode/g")
+      ;;
+    # ?)
+    #   echo "script usage: $(basename \$0) [-l] [-h] [-a somevalue]" >&2
+    #   exit 1
+    #   ;;
+  esac
+done
+shift "$(($OPTIND -1))"
+
+format=$(echo "$format" | sed 's/{[^}]*}/ /g')
+
+git log --graph --abbrev-commit --decorate --format=format:"$format" --all
