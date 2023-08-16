@@ -39,6 +39,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#06979c,bold"
 # xmodmap -e "keycode 119 = End" #Delete -> End
 
 ZSH_FZF_HISTORY_SEARCH_BIND='^f'
+ZSH_FZF_HISTORY_SEARCH_EVENT_NUMBERS=0
+ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=0
+ZSH_FZF_HISTORY_SEARCH_FZF_ARGS='+s -i +m -x -e --preview-window=hidden'
 
 bindkey '^H' backward-kill-word
 
@@ -53,6 +56,7 @@ alias sc="scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-
 
 alias air='$(go env GOPATH)/bin/air'
 
+export LESS=eFRX
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
