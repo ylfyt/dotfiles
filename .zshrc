@@ -38,16 +38,18 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#06979c,bold"
 # xmodmap -e "keycode 107 = Home" # PrtSc -> Home
 # xmodmap -e "keycode 119 = End" #Delete -> End
 
+ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='-i'
+ZSH_FZF_HISTORY_SEARCH_END_OF_LINE='yes'
 ZSH_FZF_HISTORY_SEARCH_BIND='^f'
 ZSH_FZF_HISTORY_SEARCH_EVENT_NUMBERS=0
 ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=0
-ZSH_FZF_HISTORY_SEARCH_FZF_ARGS='+s -i +m -x -e --preview-window=hidden'
 
 bindkey '^H' backward-kill-word
 
 # ALIAS
 alias j="z"
 alias g="git"
+alias gc="git checkout"
 alias gs="git status"
 # alias gg="git log --oneline --graph --decorate --all"
 alias gg="~/dotfiles/bin/gg"
