@@ -22,7 +22,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-plugins=(git z zsh-autosuggestions zsh-fzf-history-search)
+plugins=(git z zsh-autosuggestions zsh-fzf-history-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
