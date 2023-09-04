@@ -40,7 +40,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#06979c,bold"
 
 ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS='-i'
 ZSH_FZF_HISTORY_SEARCH_END_OF_LINE='yes'
-ZSH_FZF_HISTORY_SEARCH_BIND='^f'
+# ZSH_FZF_HISTORY_SEARCH_BIND='^f'
 ZSH_FZF_HISTORY_SEARCH_EVENT_NUMBERS=0
 ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=0
 
@@ -48,6 +48,7 @@ bindkey '^H' backward-kill-word
 
 # ALIAS
 alias j="z"
+alias f="fzf"
 alias g="git"
 alias gc="git checkout"
 alias gs="git status"
@@ -67,3 +68,20 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+
+function ranger {
+    local IFS=$'\t\n'
+    local tempfile="$(mktemp -t tmp.XXXXXX)"
+    local ranger_cmd=(
+        command
+        ranger
+        --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
+    )
+    
+    ${ranger_cmd[@]} "$@"
+    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+        cd -- "$(cat "$tempfile")" || return
+    fi
+    command rm -f -- "$tempfile" 2>/dev/null
+}
