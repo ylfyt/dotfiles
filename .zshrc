@@ -85,3 +85,10 @@ function ranger {
     fi
     command rm -f -- "$tempfile" 2>/dev/null
 }
+
+# bun completions
+[ -s "/home/ya/.bun/_bun" ] && source "/home/ya/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
