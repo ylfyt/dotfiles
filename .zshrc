@@ -57,14 +57,13 @@ alias gg="~/dotfiles/bin/gg"
 alias gd="git diff"
 alias sc="scrcpy --max-size 1024 --bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off"
 
-alias air='$(go env GOPATH)/bin/air'
-
 export LESS=eFRX
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
