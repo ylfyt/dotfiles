@@ -91,5 +91,11 @@ function ranger {
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$PATH:$HOME/Android/Sdk/tools"
+
 export PATH="$PATH:$HOME/flutter/bin"
+
+export JAVA_HOME="$HOME/jdk"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+export ANDROID_HOME="$HOME/android-sdk"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/"
