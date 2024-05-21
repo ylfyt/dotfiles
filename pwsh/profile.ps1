@@ -35,3 +35,33 @@ function which {
     return $null
 }
 
+function gg {
+    [CmdletBinding()]
+    param(
+        [switch]$d,
+        [switch]$a,
+        [switch]$da,
+        [switch]$ad
+    )
+
+    $format = "{d}%C(auto)%h %C(reset)%C(auto)%d%C(reset)%C(white)%s%C(reset){a}"
+
+    if ($d -or $da -or $ad) {
+        $dateCode = "%C(bold blue)%as%C(reset) "
+        $format = $format -replace "{d}", $dateCode
+    }
+    if ($a -or $da -or $ad) {
+        $authorCode = '%C(bold green) %an%C(reset)'
+        $format = $format -replace "{a}", $authorCode
+    }
+    $format = $format -replace '{[^}]*}', ''
+    git log --graph --abbrev-commit --decorate --format=format:"$format" --all
+}
+
+function gs{
+    git status
+}
+
+function gd($param){
+    git diff $param
+}
