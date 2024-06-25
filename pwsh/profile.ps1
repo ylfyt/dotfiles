@@ -17,6 +17,15 @@ Set-Alias j z
 Set-Alias l ls
 Set-Alias g git
 
+$env:JAVA_HOME = "$HOME\jdk"
+$env:ANDROID_HOME = "$HOME\AppData\Local\Android\Sdk"
+
+$env:PATH += "C:\Program Files\Go\bin;"
+$env:PATH += "$(go env GOPATH)\bin;"
+$env:PATH += "$HOME\flutter\bin;"
+$env:PATH += "$env:JAVA_HOME\bin;"
+$env:PATH += "$env:ANDROID_HOME\tools;"
+
 function which {
     param(
         [string]$CommandName
