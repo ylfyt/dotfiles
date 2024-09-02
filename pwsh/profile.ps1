@@ -20,6 +20,7 @@ Set-Alias g git
 $env:JAVA_HOME = "$HOME\jdk"
 $env:ANDROID_HOME = "$HOME\AppData\Local\Android\Sdk"
 
+$env:PATH += ";$HOME\cool-bin;"
 $env:PATH += "C:\Program Files\Go\bin;"
 $env:PATH += "$(go env GOPATH)\bin;"
 $env:PATH += "$HOME\flutter\bin;"
