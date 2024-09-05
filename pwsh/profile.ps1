@@ -13,7 +13,10 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -Color @{ Parameter = '#E84855' }
 Set-PSReadLineOption -Colors @{ Operator = 'Red' }
 
-Set-Alias j z
+Invoke-Expression (& { (zoxide init --cmd j powershell | Out-String) })
+
+Set-Alias cd j -Option AllScope
+Set-Alias cdi ji -Option AllScope
 Set-Alias l ls
 Set-Alias g git
 
