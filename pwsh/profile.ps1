@@ -30,6 +30,9 @@ function l. { eza -a | egrep "^\." $args }
 function gs { git status }
 function gd { git diff $args }
 
+try { Remove-Alias pwd -ErrorAction Stop } catch {}
+function pwd { (Get-Location).Path }
+
 $env:JAVA_HOME = "$HOME\jdk"
 $env:ANDROID_HOME = "$HOME\AppData\Local\Android\Sdk"
 
