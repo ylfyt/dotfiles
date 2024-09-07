@@ -1,4 +1,5 @@
 Clear-Host
+# Remove background color on directory when ls / Get-ChildItem
 $PSStyle.FileInfo.Directory = ""
 
 oh-my-posh init pwsh --config $HOME\dotfiles\pwsh\mytheme.omp.json | Invoke-Expression
@@ -17,8 +18,17 @@ Invoke-Expression (& { (zoxide init --cmd j powershell | Out-String) })
 
 Set-Alias cd j -Option AllScope
 Set-Alias cdi ji -Option AllScope
-Set-Alias l ls
 Set-Alias g git
+
+# Replace ls with eza
+try { Remove-Alias ls -ErrorAction Stop } catch {}
+function ls { eza --icons --color=always --group-directories-first $args }
+function ll { eza --icons --color=always --group-directories-first -alF $args }
+function l  { eza --icons --color=always --group-directories-first -alF -snew $args }
+function l. { eza -a | egrep "^\." $args }
+
+function gs { git status }
+function gd { git diff $args }
 
 $env:JAVA_HOME = "$HOME\jdk"
 $env:ANDROID_HOME = "$HOME\AppData\Local\Android\Sdk"
@@ -32,18 +42,18 @@ $env:PATH += "$env:ANDROID_HOME\tools;"
 
 function which {
     param(
-        [string]$CommandName
+        [string]$cmdName
     )
-    $commandInfo = Get-Command -Name $CommandName -ErrorAction SilentlyContinue
-    if ($commandInfo.CommandType -eq "Alias") {
-        return $commandInfo.DisplayName
+    $cmdInfo = Get-Command -Name $cmdName -ErrorAction SilentlyContinue
+    if ($cmdInfo.CommandType -eq "Alias") {
+        return $cmdInfo.DisplayName
     }
-    if ($commandInfo.Path -ne $null) {
-        return $commandInfo.Path
+    if ($cmdInfo.Path -ne $null) {
+        return $cmdInfo.Path
     }
-    $commandPath = Get-Command $CommandName -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
-    if ($commandPath -ne $null) {
-        return $commandPath
+    $cmdPath = Get-Command $cmdName -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
+    if ($cmdPath -ne $null) {
+        return $cmdPath
     }
     return $null
 }
@@ -69,12 +79,4 @@ function gg {
     }
     $format = $format -replace '{[^}]*}', ''
     git log --graph --abbrev-commit --decorate --format=format:"$format" --all
-}
-
-function gs{
-    git status
-}
-
-function gd($param){
-    git diff $param
 }
