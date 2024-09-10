@@ -22,7 +22,7 @@ Set-Alias g git
 
 # Replace ls with eza
 try { Remove-Alias ls -ErrorAction Stop } catch {}
-function ls { eza --icons --color=always --group-directories-first $args }
+function ls { eza --icons --color=always --group-directories-first -l $args }
 function ll { eza --icons --color=always --group-directories-first -alF $args }
 function l  { eza --icons --color=always --group-directories-first -alF -snew $args }
 function l. { eza -a | egrep "^\." $args }
