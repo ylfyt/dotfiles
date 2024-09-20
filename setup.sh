@@ -1,3 +1,8 @@
+
+# install zoxide
+
+sudo apt install fzf eza
+
 # Install ZSH
 sudo apt install zsh
 

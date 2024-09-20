@@ -22,7 +22,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-plugins=(git z zsh-autosuggestions zsh-fzf-history-search zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-fzf-history-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -47,7 +47,7 @@ ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=0
 bindkey '^H' backward-kill-word
 
 # ALIAS
-alias j="z"
+# alias j="z"
 alias f="fzf"
 alias g="git"
 alias gc="git checkout"
@@ -56,6 +56,14 @@ alias gs="git status"
 alias gg="~/dotfiles/bin/gg"
 alias gd="git diff"
 alias scrcpy="scrcpy --max-size 1024 --video-bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off"
+
+alias ls="eza --icons --color=always --group-directories-first -l"
+alias ll="eza --icons --color=always --group-directories-first -alF"
+alias l="eza --icons --color=always --group-directories-first -alF -snew"
+alias l.="eza -a | egrep "^\.""
+
+alias cd="j"
+alias cdi="ji"
 
 export LESS=eFRX
 export NVM_DIR="$HOME/.nvm"
@@ -99,3 +107,7 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 export ANDROID_HOME="$HOME/android-sdk"
 export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/"
+
+export PATH="$PATH:$HOME/cool-bin"
+
+eval "$(zoxide init --cmd j zsh)"
