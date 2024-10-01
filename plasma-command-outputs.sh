@@ -5,4 +5,4 @@
 free | awk '/Mem/{printf("M:%02d\n", $3/$2 * 100)}'
 
 # print ping latency
-ping google.com -c 1 -w 400 | grep 'time=' | awk -F'=' '{print $4}' | awk '{if ($1 < 500) print $1; else print "😡"}'
+(ping -c 1 -w 400 google.com 2> /dev/null | grep 'time=' || echo '0=0=0=0') | awk -F'=' '{print $4}' | awk '{if ($1 > 500) print "😡"; else if ($1 > 0) print $1; else print "❌"}'
