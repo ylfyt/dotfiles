@@ -105,9 +105,11 @@ export PATH="$PATH:$HOME/flutter/bin"
 export JAVA_HOME="$HOME/jdk"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-export ANDROID_HOME="$HOME/android-sdk"
-export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin/"
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+export PATH="$PATH:$ANDROID_HOME/emulator"
 
+export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/cool-bin"
 
 eval "$(zoxide init --cmd j zsh)"
