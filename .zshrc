@@ -55,11 +55,10 @@ alias gs="git status"
 # alias gg="git log --oneline --graph --decorate --all"
 alias gg="~/dotfiles/bin/gg"
 alias gd="git diff"
-alias scrcpy="scrcpy --max-size 1024 --video-bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off"
+alias scrcpy2="scrcpy --max-size 1024 --video-bit-rate 2M --shortcut-mod=rctrl --power-off-on-close --show-touches --turn-screen-off"
 
-alias ls="eza --icons --color=always --group-directories-first -l"
+alias ls="eza --icons --color=always -al -snew"
 alias ll="eza --icons --color=always --group-directories-first -alF"
-alias l="eza --icons --color=always --group-directories-first -alF -snew"
 alias l.="eza -a | egrep "^\.""
 
 alias cd="j"
