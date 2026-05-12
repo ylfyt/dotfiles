@@ -22,9 +22,8 @@ Set-Alias g git
 
 # Replace ls with eza
 try { Remove-Alias ls -ErrorAction Stop } catch {}
-function ls { eza --icons --color=always --group-directories-first -l $args }
+function ls { eza --icons --color=always -al -snew $args }
 function ll { eza --icons --color=always --group-directories-first -alF $args }
-function l  { eza --icons --color=always --group-directories-first -alF -snew $args }
 function l. { eza -a | egrep "^\." $args }
 
 function gs { git status }
@@ -35,6 +34,7 @@ function pwd { (Get-Location).Path }
 
 $env:JAVA_HOME = "$HOME\jdk"
 $env:ANDROID_HOME = "$HOME\AppData\Local\Android\Sdk"
+$env:NDK_HOME = "$env:ANDROID_HOME\ndk\29.0.14206865"
 
 $env:PATH += ";$HOME\cool-bin;"
 $env:PATH += "C:\Program Files\Go\bin;"
