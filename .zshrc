@@ -116,19 +116,20 @@ eval "$(zoxide init --cmd j zsh)"
 function yazi-insert-path() {
     local tmp path
 
-    tmp=$(mktemp)
+    tmp="${TMPDIR:-/tmp}/yazi-chooser-$$"
+
+    rm -f "$tmp"
 
     yazi "$PWD" --chooser-file="$tmp"
 
     if [[ -f "$tmp" ]]; then
         while IFS= read -r path; do
             # Strip Yazi search:// prefix
-            if [[ "$path" =~ '^search://[^/]+/(.+)$' ]]; then
-                path="${match[1]}"
-            fi
+            [[ "$path" =~ '^search://[^/]+/(.+)$' ]] && path="${match[1]}"
 
-            # Escape only when necessary
-            path="${(q)path}"
+            # Quote only when needed
+            [[ "$path" =~ [[:space:]\'\"\`] ]] && \
+                path="\"${path//\"/\\\"}\""
 
             LBUFFER+="$path "
         done < "$tmp"
