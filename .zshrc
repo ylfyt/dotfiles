@@ -112,3 +112,32 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/cool-bin"
 
 eval "$(zoxide init --cmd j zsh)"
+
+function yazi-insert-path() {
+    local tmp path
+
+    tmp=$(mktemp)
+
+    yazi "$PWD" --chooser-file="$tmp"
+
+    if [[ -f "$tmp" ]]; then
+        while IFS= read -r path; do
+            # Strip Yazi search:// prefix
+            if [[ "$path" =~ '^search://[^/]+/(.+)$' ]]; then
+                path="${match[1]}"
+            fi
+
+            # Escape only when necessary
+            path="${(q)path}"
+
+            LBUFFER+="$path "
+        done < "$tmp"
+
+        rm -f "$tmp"
+    fi
+
+    zle redisplay
+}
+
+zle -N yazi-insert-path
+bindkey '^O' yazi-insert-path

@@ -20,6 +20,8 @@ Invoke-Expression (& { (zoxide init --cmd j powershell | Out-String) })
 try { Remove-Alias pwd -ErrorAction Stop } catch {}
 try { Remove-Alias gc -Force -ErrorAction Stop } catch {}
 
+Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock { Invoke-YaziPicker }
+
 Set-Alias cd j -Option AllScope
 Set-Alias cdi ji -Option AllScope
 Set-Alias g git
@@ -98,3 +100,40 @@ function scrcpy2 {
         --turn-screen-off `
         @Args
 }
+
+function Invoke-YaziPicker {
+    $tmp = New-TemporaryFile
+
+    try {
+        yazi . --chooser-file $tmp
+
+        if (!(Test-Path $tmp)) {
+            return
+        }
+
+        $paths = Get-Content $tmp | ForEach-Object {
+            $path = $_.Trim()
+
+            # Strip Yazi search:// prefix
+            if ($path -match '^search://[^/]+/(.+)$') {
+                $path = $Matches[1]
+            }
+
+            # Quote only when necessary
+            if ($path -match '[\s''"`]') {
+                '"' + $path.Replace('"', '""') + '"'
+            }
+            else {
+                $path
+            }
+        }
+
+        if ($paths.Count -gt 0) {
+            [Microsoft.PowerShell.PSConsoleReadLine]::Insert(($paths -join ' '))
+        }
+    }
+    finally {
+        Remove-Item $tmp -ErrorAction Ignore
+    }
+}
+
