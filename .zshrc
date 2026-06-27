@@ -1,3 +1,36 @@
+function yazi-pick() {
+  local tmp=$(mktemp -t tmp.XXXXXX)
+  local saved_path="$PATH"
+  command yazi . --chooser-file "$tmp"
+  export PATH="$saved_path"
+  local result=""
+  if [[ -s "$tmp" ]]; then
+    while IFS= read -r path || [[ -n "$path" ]]; do
+      [[ -z "$path" ]] && continue
+      if [[ "$path" =~ [[:space:]] ]]; then
+        result+="\"$path\" "
+      else
+        result+="$path "
+      fi
+    done < "$tmp"
+    result="${result% }"
+  fi
+  command rm -f -- "$tmp" 2>/dev/null
+  echo "$result"
+}
+
+function _yazi-pick-widget() {
+  local result=$(yazi-pick)
+  if [[ -n "$result" ]]; then
+    LBUFFER+="$result"
+    zle redisplay
+  fi
+}
+
+zle -N _yazi-pick-widget
+bindkey '^f' _yazi-pick-widget
+
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -112,31 +145,3 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/cool-bin"
 
 eval "$(zoxide init --cmd j zsh)"
-
-function yazi-pick() {
-  local tmp=$(mktemp -t tmp.XXXXXX)
-  local saved_path="$PATH"
-  command yazi . --chooser-file "$tmp"
-  export PATH="$saved_path"
-  local result=""
-  if [[ -s "$tmp" ]]; then
-    result=$(< "$tmp" tr '\n' ' ')
-    result="${result% }"
-  fi
-  command rm -f -- "$tmp" 2>/dev/null
-  echo "$result"
-}
-
-function _yazi-pick-widget() {
-  local result=$(yazi-pick)
-  if [[ -n "$result" ]]; then
-    if [[ "$result" =~ [[:space:]] ]]; then
-      result="\"$result\""
-    fi
-    LBUFFER+="$result"
-    zle redisplay
-  fi
-}
-
-zle -N _yazi-pick-widget
-bindkey '^f' _yazi-pick-widget
