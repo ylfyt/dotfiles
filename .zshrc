@@ -113,32 +113,30 @@ export PATH="$PATH:$HOME/cool-bin"
 
 eval "$(zoxide init --cmd j zsh)"
 
-function yazi-insert-path() {
-    local tmp path
-
-    tmp="${TMPDIR:-/tmp}/yazi-chooser-$$"
-
-    rm -f "$tmp"
-
-    yazi "$PWD" --chooser-file="$tmp"
-
-    if [[ -f "$tmp" ]]; then
-        while IFS= read -r path; do
-            # Strip Yazi search:// prefix
-            [[ "$path" =~ '^search://[^/]+/(.+)$' ]] && path="${match[1]}"
-
-            # Quote only when needed
-            [[ "$path" =~ [[:space:]\'\"\`] ]] && \
-                path="\"${path//\"/\\\"}\""
-
-            LBUFFER+="$path "
-        done < "$tmp"
-
-        rm -f "$tmp"
-    fi
-
-    zle redisplay
+function yazi-pick() {
+  local tmp=$(mktemp -t tmp.XXXXXX)
+  local saved_path="$PATH"
+  command yazi . --chooser-file "$tmp"
+  export PATH="$saved_path"
+  local result=""
+  if [[ -s "$tmp" ]]; then
+    result=$(< "$tmp" tr '\n' ' ')
+    result="${result% }"
+  fi
+  command rm -f -- "$tmp" 2>/dev/null
+  echo "$result"
 }
 
-zle -N yazi-insert-path
-bindkey '^O' yazi-insert-path
+function _yazi-pick-widget() {
+  local result=$(yazi-pick)
+  if [[ -n "$result" ]]; then
+    if [[ "$result" =~ [[:space:]] ]]; then
+      result="\"$result\""
+    fi
+    LBUFFER+="$result"
+    zle redisplay
+  fi
+}
+
+zle -N _yazi-pick-widget
+bindkey '^f' _yazi-pick-widget
