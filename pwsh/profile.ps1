@@ -2,7 +2,8 @@ Clear-Host
 # Remove background color on directory when ls / Get-ChildItem
 $PSStyle.FileInfo.Directory = ""
 
-oh-my-posh init pwsh --config $HOME\dotfiles\pwsh\mytheme.omp.json | Invoke-Expression
+Invoke-Expression (&starship init powershell)
+# oh-my-posh init pwsh --config $HOME\dotfiles\pwsh\mytheme.omp.json | Invoke-Expression
 
 # Fzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
@@ -16,6 +17,9 @@ Set-PSReadLineOption -Colors @{ Operator = 'Red' }
 
 Invoke-Expression (& { (zoxide init --cmd j powershell | Out-String) })
 
+try { Remove-Alias pwd -ErrorAction Stop } catch {}
+try { Remove-Alias gc -Force -ErrorAction Stop } catch {}
+
 Set-Alias cd j -Option AllScope
 Set-Alias cdi ji -Option AllScope
 Set-Alias g git
@@ -28,8 +32,8 @@ function l. { eza -a | egrep "^\." $args }
 
 function gs { git status }
 function gd { git diff $args }
+function gc { git checkout $args }
 
-try { Remove-Alias pwd -ErrorAction Stop } catch {}
 function pwd { (Get-Location).Path }
 
 $env:JAVA_HOME = "$HOME\jdk"
@@ -82,4 +86,15 @@ function gg {
     }
     $format = $format -replace '{[^}]*}', ''
     git log --graph --abbrev-commit --decorate --format=format:"$format" --all
+}
+
+function scrcpy2 {
+    & scrcpy.exe `
+        --max-size 1024 `
+        --video-bit-rate 2M `
+        --shortcut-mod=rctrl `
+        --power-off-on-close `
+        --show-touches `
+        --turn-screen-off `
+        @Args
 }
