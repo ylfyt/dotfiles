@@ -10,6 +10,7 @@ function yazi-pick() {
       if [[ "$path" =~ ^search://[^/]+/(.+)$ ]]; then
         path="${match[1]}"
       fi
+      path="${path/#$HOME/\$HOME}"
       if [[ "$path" =~ [[:space:]] ]]; then
         result+="\"$path\" "
       else
@@ -31,7 +32,8 @@ function _yazi-pick-widget() {
 }
 
 zle -N _yazi-pick-widget
-bindkey '^f' _yazi-pick-widget
+bindkey -r '^o'
+bindkey '^o' _yazi-pick-widget
 
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
