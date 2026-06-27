@@ -7,6 +7,9 @@ function yazi-pick() {
   if [[ -s "$tmp" ]]; then
     while IFS= read -r path || [[ -n "$path" ]]; do
       [[ -z "$path" ]] && continue
+      if [[ "$path" =~ ^search://[^/]+/(.+)$ ]]; then
+        path="${match[1]}"
+      fi
       if [[ "$path" =~ [[:space:]] ]]; then
         result+="\"$path\" "
       else
