@@ -11,7 +11,7 @@ function yazi-pick() {
         path="${match[1]}"
       fi
       path="${path/#$HOME/\$HOME}"
-      if [[ "$path" =~ [[:space:]] ]]; then
+      if [[ "$path" == *'['* || "$path" == *']'* || "$path" == *'('* || "$path" == *')'* || "$path" == *' '* ]]; then
         result+="\"$path\" "
       else
         result+="$path "
