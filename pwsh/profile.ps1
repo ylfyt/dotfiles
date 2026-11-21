@@ -2,11 +2,28 @@ Clear-Host
 # Remove background color on directory when ls / Get-ChildItem
 $PSStyle.FileInfo.Directory = ""
 
-Invoke-Expression (&starship init powershell)
+. "$HOME\dotfiles\pwsh\prompt.ps1"
+#Invoke-Expression (&starship init powershell)
 # oh-my-posh init pwsh --config $HOME\dotfiles\pwsh\mytheme.omp.json | Invoke-Expression
 
 # Fzf
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+# Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+# Lazy-load PSFzf
+Set-PSReadLineKeyHandler -Chord 'Ctrl+r' -ScriptBlock {
+    if (-not (Get-Module -Name PSFzf)) {
+        Import-Module PSFzf
+        Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+    }
+    Invoke-FuzzyHistory
+}
+
+Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -ScriptBlock {
+    if (-not (Get-Module -Name PSFzf)) {
+        Import-Module PSFzf
+        Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+    }
+    Invoke-Fzf
+}
 
 # PSReadLine
 Set-PSReadLineOption -BellStyle None
